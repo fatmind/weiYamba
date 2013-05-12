@@ -1,5 +1,8 @@
 <resources>
 
     <string name="app_name">weiYamba</string>
+    <string name="access_token">AccessToken</string>
+    <string name="edit_hint">please input your share things</string>
+    <string name="commit">commit</string>
 
 </resources>
