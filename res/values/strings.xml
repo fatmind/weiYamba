@@ -4,5 +4,13 @@
     <string name="access_token">AccessToken</string>
     <string name="edit_hint">please input your share things</string>
     <string name="commit">commit</string>
+    
+    <string name="username">username</string>
+    <string name="pass">pass</string>
+    
+    <string name="settingUserInfo">settingUserInfo</string>
+    
+    <string name="startUpdateService">StartUpdateService</string>
+    <string name="stopUpdateService">StopUpdateService</string>
 
 </resources>
