@@ -111,13 +111,13 @@ public class PostActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.settingUserInfo:
-			startActivity(new Intent(this, SettingUserInfoActivity.class));
+			startActivity(new Intent(this, UserSettingActivity.class));
 			break;
 		case R.id.startUpdateService:
-			startService(new Intent(this, UpdateService.class));
+			startService(new Intent(this, FeedUpdateService.class));
 			break;
 		case R.id.stopUpdateService:
-			stopService(new Intent(this, UpdateService.class));
+			stopService(new Intent(this, FeedUpdateService.class));
 			break;
 		default:
 			break;

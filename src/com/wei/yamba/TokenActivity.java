@@ -27,42 +27,35 @@ public class TokenActivity extends Activity {
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
 
-		String token = TokenManager.getToken(this);
+		final WebView mWebView = new WebView(this);
+		setContentView(mWebView);
+		WeiboParameters params = new WeiboParameters();
+		params.add("client_id", APP_KEY);
+		params.add("redirect_uri", RED_URL);
+		params.add("response_type", "token");
+		params.add("display", "mobile");
+		String url = SERVER + Utility.encodeUrl(params);
 		
-		/*
-		 * if token is null, get token
-		 */
-		if(token == null) {
-		
-			final WebView mWebView = new WebView(this);
-			setContentView(mWebView);
-			WeiboParameters params = new WeiboParameters();
-			params.add("client_id", APP_KEY);
-			params.add("redirect_uri", RED_URL);
-			params.add("response_type", "token");
-			params.add("display", "mobile");
-			String url = SERVER + Utility.encodeUrl(params);
-			
-			mWebView.setVerticalScrollBarEnabled(false);
-			mWebView.setHorizontalScrollBarEnabled(false);
-			mWebView.getSettings().setJavaScriptEnabled(true);
-			mWebView.setWebViewClient(new WeiboWebViewClient());
-			mWebView.setVisibility(View.INVISIBLE);
-			mWebView.loadUrl(url);
-		} 
-		/*
-		 * start post activity
-		 */
-		else {
-			startPostActivity();
-		}
+		mWebView.setVerticalScrollBarEnabled(false);
+		mWebView.setHorizontalScrollBarEnabled(false);
+		mWebView.getSettings().setJavaScriptEnabled(true);
+		mWebView.setWebViewClient(new WeiboWebViewClient());
+		mWebView.setVisibility(View.INVISIBLE);
+		mWebView.loadUrl(url);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	private void startPostActivity() {
-		Intent intent = new Intent(this, PostActivity.class);
+		Bundle options = this.getIntent().getExtras();
+		Class activityClass = null;
+		try {
+			activityClass = Class.forName(options.getString(TokenManager.TOKEN_BEFOR_ACTIVITY));
+		} catch (ClassNotFoundException e) {
+			Log.e(TokenActivity.class.getSimpleName(), "back to init activity before get token ", e);
+		}
+		Intent intent = new Intent(this, activityClass);
 		startActivity(intent);
 	}
 	

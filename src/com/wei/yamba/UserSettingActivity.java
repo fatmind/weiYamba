@@ -5,7 +5,7 @@ import com.weiyamba.R;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-public class SettingUserInfoActivity extends PreferenceActivity {
+public class UserSettingActivity extends PreferenceActivity {
 
 	@SuppressWarnings("deprecation")
 	@Override

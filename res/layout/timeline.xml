@@ -14,20 +14,10 @@
         android:background="#FFEBCD"
         />
     
-    <EditText 
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:id="@+id/post_content"
-        android:hint="@string/edit_hint"
-        />
-    
-    <Button 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/post_button"
-        android:text="@string/commit"
-        />
+	<ListView android:id="@+id/timelineListView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="#6000" />
+	    
 
 </LinearLayout>
